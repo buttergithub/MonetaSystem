@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.moneta.monetasys.ui.MonetaController"
+            style="-fx-background-color: #f6f8fb;">
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    vbarPolicy="AS_NEEDED"
+                    hbarPolicy="NEVER"
+                    style="-fx-background: transparent; -fx-background-color: transparent;">
+
+            <content>
+                <StackPane style="-fx-padding: 28;">
+
+                    <VBox spacing="18"
+                          style="-fx-background-color: white; -fx-background-radius: 28; -fx-padding: 26; -fx-effect: dropshadow(gaussian, rgba(15,23,42,0.16), 24, 0, 0, 8);">
+
+                        <HBox spacing="22">
+
+                            <VBox fx:id="authPane"
+                                  spacing="14"
+                                  prefWidth="390"
+                                  style="-fx-padding: 28; -fx-background-color: white; -fx-background-radius: 24;">
+
+                                <Label text="Moneta"
+                                       style="-fx-text-fill: #16a34a; -fx-font-size: 34px; -fx-font-weight: bold;" />
+
+                                <Label text="Welcome to your secure money space"
+                                       wrapText="true"
+                                       style="-fx-text-fill: #0f172a; -fx-font-size: 22px; -fx-font-weight: bold;" />
+
+                                <Label text="Sign up or log in to track income, expenses, and account balance."
+                                       wrapText="true"
+                                       style="-fx-text-fill: #64748b; -fx-font-size: 13px;" />
+
+                                <TextField fx:id="usernameField"
+                                           promptText="Username"
+                                           style="-fx-background-color: #f8fafc; -fx-background-radius: 12; -fx-padding: 12; -fx-border-color: #dbeafe; -fx-border-radius: 12;" />
+
+                                <PasswordField fx:id="passwordField"
+                                               promptText="Password"
+                                               style="-fx-background-color: #f8fafc; -fx-background-radius: 12; -fx-padding: 12; -fx-border-color: #dbeafe; -fx-border-radius: 12;" />
+
+                                <Button text="Create Account"
+                                        onAction="#handleSignUp"
+                                        maxWidth="Infinity"
+                                        style="-fx-background-color: #16a34a; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 12;" />
+
+                                <Button text="Login"
+                                        onAction="#handleLogin"
+                                        maxWidth="Infinity"
+                                        style="-fx-background-color: #0f766e; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 12;" />
+                            </VBox>
+
+                            <StackPane prefWidth="430"
+                                       prefHeight="420"
+                                       style="-fx-background-color: linear-gradient(to bottom right, #22c55e, #064e3b); -fx-background-radius: 28; -fx-padding: 30;">
+
+                                <VBox spacing="18" alignment="CENTER">
+                                    <Label text="Your money, organized."
+                                           style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;" />
+
+                                    <Label text="Track income, control expenses, and keep your balance visible."
+                                           wrapText="true"
+                                           style="-fx-text-fill: #dcfce7; -fx-font-size: 14px; -fx-text-alignment: center;" />
+
+                                    <HBox spacing="12" alignment="CENTER">
+                                        <Circle radius="25" style="-fx-fill: #facc15;" />
+                                        <Circle radius="18" style="-fx-fill: #fde68a;" />
+                                        <Circle radius="31" style="-fx-fill: #f59e0b;" />
+                                        <Circle radius="22" style="-fx-fill: #fef3c7;" />
+                                    </HBox>
+
+                                    <VBox spacing="8"
+                                          style="-fx-background-color: rgba(255,255,255,0.18); -fx-background-radius: 20; -fx-padding: 18;">
+                                        <Label text="MONETA WALLET"
+                                               style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px;" />
+                                        <Label text="Income  •  Expense  •  Balance"
+                                               style="-fx-text-fill: #ecfdf5; -fx-font-size: 13px;" />
+                                    </VBox>
+                                </VBox>
+                            </StackPane>
+                        </HBox>
+
+                        <VBox fx:id="dashboardPane"
+                              spacing="16"
+                              style="-fx-background-color: #f8fafc; -fx-padding: 20; -fx-background-radius: 24;">
+
+                            <Label fx:id="welcomeLabel"
+                                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #0f172a;" />
+
+                            <GridPane hgap="18" vgap="15">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="34"/>
+                                    <ColumnConstraints percentWidth="36"/>
+                                    <ColumnConstraints percentWidth="30"/>
+                                </columnConstraints>
+
+                                <VBox spacing="10"
+                                      GridPane.columnIndex="0"
+                                      style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 18;">
+                                    <Label text="Money Movement"
+                                           style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #064e3b;" />
+
+                                    <TextField fx:id="amountField"
+                                               promptText="Amount"
+                                               style="-fx-background-radius: 10; -fx-padding: 10;" />
+
+                                    <TextField fx:id="descriptionField"
+                                               promptText="Description"
+                                               style="-fx-background-radius: 10; -fx-padding: 10;" />
+
+                                    <HBox spacing="10">
+                                        <Button text="+ Income"
+                                                onAction="#handleAddIncome"
+                                                style="-fx-background-color: #22c55e; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+
+                                        <Button text="- Expense"
+                                                onAction="#handleAddExpense"
+                                                style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                                    </HBox>
+
+                                    <Separator />
+
+                                    <TextField fx:id="searchField"
+                                               promptText="Search account"
+                                               style="-fx-background-radius: 10; -fx-padding: 10;" />
+
+                                    <Button text="Search Account"
+                                            onAction="#handleSearchAccount"
+                                            maxWidth="Infinity" />
+
+                                    <Button text="Remove My Account"
+                                            onAction="#handleRemoveAccount"
+                                            maxWidth="Infinity" />
+
+                                    <Button text="Logout"
+                                            onAction="#handleLogout"
+                                            maxWidth="Infinity" />
+                                </VBox>
+
+                                <VBox spacing="10"
+                                      GridPane.columnIndex="1"
+                                      style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 18;">
+                                    <Label text="Transaction History"
+                                           style="-fx-font-size: 17px; -fx-font-weight: bold;" />
+
+                                    <ListView fx:id="transactionListView"
+                                              prefHeight="260" />
+                                </VBox>
+
+                                <VBox spacing="10"
+                                      GridPane.columnIndex="2"
+                                      style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 18;">
+                                    <Label text="Financial Snapshot"
+                                           style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #713f12;" />
+
+                                    <Label fx:id="summaryLabel"
+                                           wrapText="true" />
+
+                                    <Separator />
+
+                                    <Button text="Save Data"
+                                            onAction="#handleSaveData"
+                                            maxWidth="Infinity"
+                                            style="-fx-background-color: #facc15; -fx-text-fill: #111827; -fx-font-weight: bold; -fx-background-radius: 10;" />
+
+                                    <Button text="Load Data"
+                                            onAction="#handleLoadData"
+                                            maxWidth="Infinity" />
+
+                                    <Label text="Registered Accounts"
+                                           style="-fx-font-weight: bold;" />
+
+                                    <Button text="Sort Accounts"
+                                            onAction="#handleSortAccounts"
+                                            maxWidth="Infinity" />
+
+                                    <ListView fx:id="accountListView"
+                                              onMouseClicked="#handleAccountSelection"
+                                              prefHeight="100" />
+                                </VBox>
+                            </GridPane>
+                        </VBox>
+
+                        <Label fx:id="messageLabel"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                    </VBox>
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
